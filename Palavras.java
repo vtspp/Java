@@ -1,3 +1,4 @@
+//C√≥digo usado para inverter os elementos armazenados em um vetor.
 import java.util.*;
 
 public class Palavras {
@@ -14,7 +15,7 @@ public class Palavras {
 
 		System.out.print("Normal: ");
 		for (int a = 0; a < n.length; a++) {
-			System.out.print(n[a]);
+			System.out.print(n[a]); //Mostra os elementos armazenados no vetor em ordem crescente.
 		}
 		System.out.println();
 	}
@@ -25,7 +26,7 @@ public class Palavras {
 
 		for (int b = n.length - 1; b >= 0; b--) {
 
-			System.out.print(n[b]);
+			System.out.print(n[b]); //Mostra os elementos armazenados no vetor em ordem decrescente.
 		}
 	}
 
@@ -38,8 +39,8 @@ public class Palavras {
 		n = nome.toCharArray();
 
 		Palavras p = new Palavras(nome, n);
-		p.palavNorm();  //Chama  mÈtodo e envia o conteudo armazenado na vari·vel "n" e posteriormente convertido em array para o laÁo for de "a".  
-		p.palavraInv(); ////Chama  mÈtodo e envia o conteudo armazenado na vari·vel "n" e posteriormente convertido em array para o laÁo for de "b".
+		p.palavNorm();  //Chama  m√©todo e envia o conteudo armazenado na vari√°vel "n" e posteriormente convertido em array para o la√ßo for de "a".  
+		p.palavraInv(); ////Chama  m√©todo e envia o conteudo armazenado na vari√°vel "n" e posteriormente convertido em array para o la√ßo for de "b".
 
 	}
 
