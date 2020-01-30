@@ -6,7 +6,7 @@ public class Primo {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("Dígite um número para saber se é primo: ");
+		System.out.println("DÃ­gite um nÃºmero para saber se Ã© primo: ");
 
 		int dividendo = sc.nextInt();
 		int divisor;
@@ -21,10 +21,11 @@ public class Primo {
 		}
 
 		if (controle == 2) {
-			System.out.println("O número " + dividendo + " é primo.");
+			System.out.println("O nÃºmero " + dividendo + " Ã© primo.");
 		} else {
-			System.out.print("O número " + dividendo + " não é primo.");
+			System.out.print("O nÃºmero " + dividendo + " nÃ£o Ã© primo.");
 		}
+		sc.close;
 
 	}
 }
