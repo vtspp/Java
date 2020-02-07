@@ -1,0 +1,68 @@
+package application;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import db.DB;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		try {
+			//Instanciar conexão com Banco de dados
+			conn = DB.getConnection();
+			//Instanciar o objeto que ira receber os comandos SQL
+			ps = conn.prepareStatement(
+					"INSERT INTO seller"
+					+ "(Name, Email, BirthDate, BaseSalary, DepartmentId)"
+					+ "VALUES "
+					+ "(?, ?, ?, ?, ?)",
+					Statement.RETURN_GENERATED_KEYS);
+			
+			ps.setString(1, "Carl Purple");
+			ps.setString(2, "carl@gmail.com");
+			ps.setDate(3, new Date(sdf.parse("22/04/1985").getTime()));
+			ps.setDouble(4, 3.000);
+			ps.setInt(5, 4);
+			
+			//Insere os novos dados
+			int rowAffect = ps.executeUpdate();
+			
+			if (rowAffect > 0) {
+				rs = ps.getGeneratedKeys();
+				while(rs.next()) {
+					int id = rs.getInt(1);
+					System.out.println("Dome, iD = " + id);
+				}
+			}else {
+				System.out.println("No row affect");
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		catch(ParseException e) {
+			e.printStackTrace();
+		}
+		finally {
+			//Fecha as conexoes
+			DB.closePreparedStatement(ps);
+			DB.closeResultSet(rs);
+			DB.closeConnection();
+		}
+
+	}
+
+}
